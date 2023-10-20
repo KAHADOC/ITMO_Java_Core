@@ -38,9 +38,22 @@ public class Book {
     // ПКМ -> Generate -> Setter and Getter
 
     // метод добавления нового автора в массив authors
-    public void addAddAuthor(Author author) {
-        // author не может быть null ссылкой
-        // новые авторы не должны перезаписывать уже существующих в массиве
+    public void addAuthor(Author author) throws IllegalArgumentException {
+            if (author == null)
+                throw new IllegalArgumentException("Null object for author");
+            int i = 0;
+            while (this.authors[i++] != null && i < authors.length) {
+                if (authors[i].equals(author)) {
+                    System.out.println("This dude is already on the cover!");
+                    return;
+                }
+                //i++;
+            }
+            if (i == authors.length) {
+                System.out.println("No room for this author!");
+                return;
+            }
+            authors[i] = author;
     }
 
 
