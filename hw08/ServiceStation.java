@@ -25,9 +25,10 @@ public class ServiceStation {
                if (vehicle instanceof Car car) {
                    int randomIndex = new Random().nextInt(colors.length);
                    car.changeColour(colors[randomIndex]);
-                   vehicle = null;
+                  // vehicle = null;
                }
            }
         }
+        Arrays.fill(vehicles, null);
     }
 }
