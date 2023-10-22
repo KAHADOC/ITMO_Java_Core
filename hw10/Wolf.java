@@ -16,8 +16,11 @@ public class Wolf extends WildAnimal{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Wolf wolf)) return false;
-        return Arrays.equals(likeToEat, wolf.likeToEat) && // Objects.equals(color, wolf.color); непонятно, почему так сгенерировалось?
-                (this.color).equals((((Wolf) o).color)); // здесь используется String.equals()? То есть тут по значению проверка?
+        rreturn Arrays.equals(likeToEat, wolf.likeToEat) &&
+                (this.color).equals((((Wolf) o).color)) &&
+                (this.getStrength() == ((Wolf) o).getStrength()) &&
+                (this.getName().equals(((Wolf) o).getName())) &&
+                (this.getAge() == ((Wolf) o).getAge());
     }
 
     @Override
