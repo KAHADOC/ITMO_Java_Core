@@ -16,7 +16,7 @@ public class Pass {
         this.owner = owner;
         if (owner.getRegistered() == null) return;
         this.type = type;
-        if (type == PassType.single)
+        if (type == PassType.SINGLE)
             if (!startDate.isBefore(LocalDate.now())) {
                 this.startDate = startDate;
                 this.expiryDate = startDate;
@@ -74,4 +74,5 @@ public class Pass {
     public Member getOwner() {
         return owner;
     }
+
 }
