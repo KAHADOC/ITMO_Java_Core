@@ -3,6 +3,11 @@ package edu.itmo.java.exam1;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Arrays;
+
+import static edu.itmo.java.exam1.PassType.validPass;
+import static edu.itmo.java.exam1.PassType.validTime;
+import static edu.itmo.java.exam1.TrainingArea.validZone;
+
 public class Fitness {
     private Pass[] swimPool = new Pass[20];
     private Pass[] gymZone = new Pass[20];
@@ -14,34 +19,8 @@ public class Fitness {
         if (fitnessInstance == null) fitnessInstance = new Fitness();
         return fitnessInstance;
     }
-    public boolean validPass(Pass memberCard) {
-        try { return ((!memberCard.getStartDate().isAfter(LocalDate.now()))
-                && (!memberCard.getExpiryDate().isBefore(LocalDate.now()))); }
-        catch (NullPointerException oops) {
-            System.out.println("Invalid Pass"); return false;
-        }
-    }
-    public boolean validZone(Pass memberCard, TrainingArea zone) {
-        boolean result = false;
-        if (memberCard.getType() == PassType.SINGLE && (zone == TrainingArea.GYM_ZONE
-                || zone == TrainingArea.SWIM_POOL)) result = true;
-        if (memberCard.getType() == PassType.DAYTIME && (zone == TrainingArea.GYM_ZONE
-                || zone == TrainingArea.GROUP_CLASS)) result = true;
-        if (memberCard.getType() == PassType.FULL) result = true;
-        return result;
-    }
-    public boolean validTime(Pass memberCard) {
-        boolean result = false;
-        if ((memberCard.getType() == PassType.SINGLE || memberCard.getType() == PassType.FULL)
-                && LocalTime.now().isAfter(LocalTime.of(8, 00))
-                && LocalTime.now().isBefore(LocalTime.of(22, 00)))
-            result = true;
-        if (memberCard.getType() == PassType.DAYTIME
-                && LocalTime.now().isAfter(LocalTime.of(8, 00))
-                && LocalTime.now().isBefore(LocalTime.of(16, 00)))
-            result = true;
-        return result;
-    }
+
+
     public boolean zoneFull(TrainingArea zone) {
         boolean result = switch (zone) {
             case GYM_ZONE -> checkZone(gymZone);

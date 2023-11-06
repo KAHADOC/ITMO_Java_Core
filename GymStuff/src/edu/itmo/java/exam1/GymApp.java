@@ -26,9 +26,9 @@ public class GymApp {
 //        System.out.println(babyPass.toString());
 //        System.out.println(Fitness.validPass(babyPass));
         Fitness fitApp = Fitness.createFitness();
-        System.out.println(fitApp.validPass(fitnessBabeCard));
-        System.out.println(fitApp.validPass(runnerCard));
-        System.out.println(fitApp.validPass(swimmerDudeCard));
+        System.out.println(PassType.validPass(fitnessBabeCard));
+        System.out.println(PassType.validPass(runnerCard));
+        System.out.println(PassType.validPass(swimmerDudeCard));
         //Fitness.registerMember(TrainingArea.swimPool, babyPass);
         System.out.println("Registering...");
         fitApp.registerMember(TrainingArea.SWIM_POOL, swimmerDudeCard);
